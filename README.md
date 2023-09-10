@@ -19,9 +19,9 @@ You can access the Python application by opening a web browser or using a tool l
 
 Dockerfile:
 ==========================================================
-Uses the official Python 3.8 image as the base image.
-Sets the working directory inside the container to /app.
-Copies the contents of the current directory (including app.py) into the container's /app directory.
-Exposes port 8099 for the application.
-Specifies the command to run the Python application.
+1. Uses the official Python 3.8 image as the base image.
+2. Sets the working directory inside the container to /app.
+3. Copies the contents of the current directory (including app.py) into the container's /app directory.
+4. Exposes port 8099 for the application.
+5. Specifies the command to run the Python application.
 ==========================================================
