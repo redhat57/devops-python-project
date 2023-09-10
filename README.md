@@ -24,4 +24,4 @@ Dockerfile:
 3. Copies the contents of the current directory (including app.py) into the container's /app directory.
 4. Exposes port 8099 for the application.
 5. Specifies the command to run the Python application.
-==========================================================
+
