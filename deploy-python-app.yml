@@ -33,7 +33,8 @@
     - name: Build Docker image
       docker_image:
         name: my-python-app-image
-        path: /opt/
+        build:
+          path: /opt/
         state: present
       become: yes
     - name: Run Docker container
