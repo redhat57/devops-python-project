@@ -1,6 +1,6 @@
 ---
 - name: Deploy Docker Container with Python App
-  hosts: node2
+  hosts: node3
   become: yes  # Run tasks with sudo privileges
 
   tasks:
