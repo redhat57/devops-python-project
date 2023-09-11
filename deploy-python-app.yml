@@ -35,7 +35,8 @@
         name: my-python-app-image
         build:
           path: /opt/
-        state: build
+        state: present
+        source: build
       become: yes
 
     - name: Run Docker container
