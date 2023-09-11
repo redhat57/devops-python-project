@@ -10,6 +10,7 @@
         update_cache: yes
       when: ansible_distribution == 'Ubuntu'  # Adjust for other Linux distributions
       become: yes
+
     - name: Start and enable Docker service
       service:
         name: docker
@@ -22,8 +23,7 @@
         src: /opt/Dockerfile
         dest: /opt/Dockerfile
       become: yes  # Copy as sudo user
-      # You need to replace /path/to/your/dockerfile-and-app with the actual path to your Dockerfile and app files.
-
+ 
     - name: Copy Python app files to the client node
       copy:
         src: /opt/app.py
@@ -34,9 +34,10 @@
       docker_image:
         name: my-python-app-image
         build:
-          path: /opt/Dockerfile
-        state: present
+          path: /opt/
+        state: build
       become: yes
+
     - name: Run Docker container
       docker_container:
         name: my-python-app-container
