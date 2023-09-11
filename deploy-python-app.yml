@@ -9,7 +9,7 @@
         name: docker.io
         update_cache: yes
       when: ansible_distribution == 'Ubuntu'  # Adjust for other Linux distributions
-
+      become: yes
     - name: Start and enable Docker service
       service:
         name: docker
@@ -33,7 +33,7 @@
     - name: Build Docker image
       docker_image:
         name: my-python-app-image
-        path: /opt/docker-app
+        path: /opt/
         state: present
       become: yes
     - name: Run Docker container
