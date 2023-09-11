@@ -35,7 +35,7 @@
         name: my-python-app-image
         path: /opt/docker-app
         state: present
-
+      become: yes
     - name: Run Docker container
       docker_container:
         name: my-python-app-container
@@ -43,3 +43,4 @@
         ports:
           - "8099:8099"
         state: started
+      become: yes
