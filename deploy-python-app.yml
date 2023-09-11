@@ -1,0 +1,45 @@
+---
+- name: Deploy Docker Container with Python App
+  hosts: client_node
+  become: yes  # Run tasks with sudo privileges
+
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        update_cache: yes
+      when: ansible_distribution == 'Ubuntu'  # Adjust for other Linux distributions
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+      when: ansible_distribution == 'Ubuntu'  # Adjust for other Linux distributions
+
+    - name: Copy Dockerfile file to the client node
+      copy:
+        src: /opt/Dockerfile
+        dest: /opt/Dockerfile
+      become: yes  # Copy as sudo user
+      # You need to replace /path/to/your/dockerfile-and-app with the actual path to your Dockerfile and app files.
+
+    - name: Copy Python app files to the client node
+      copy:
+        src: /opt/app.py
+        dest: /opt/app.py
+      become: yes
+
+    - name: Build Docker image
+      docker_image:
+        name: my-python-app-image
+        path: /opt/docker-app
+        state: present
+
+    - name: Run Docker container
+      docker_container:
+        name: my-python-app-container
+        image: my-python-app-image
+        ports:
+          - "8099:8099"
+        state: started
